@@ -1,0 +1,24 @@
+<nav color="#000000">
+  <collection label="Splunk DevOps Hands-On">
+    <view name="home" label="Main Page" default="true" />
+    <view name="search" label="Search Tool" default="false" />
+    <view name="dashboards" label="Dashboards" default="false" />
+    <view name="faq" label="Additional Information" default="false" />
+  </collection>
+  <collection label="Build">
+  <view name="build" default="false" label="Build" />
+  <view name="build_sample" default="false" label="Build Samples" />
+  </collection>
+   <collection label="Test">
+  <view name="test" default="false" label="Test" />
+  <view name="test_sample" default="false" label="Test Samples" />
+    </collection>
+  <collection label="Run">
+  <view name="run" default="false" label="Run" />
+  <view name="run_sample" default="false" label="Run Samples" />
+    </collection>
+  <!-- <collection label="Container Management">
+  <view name="container_information" default="false" label="Container Informartion" />
+  <view name="container_dashboards" default="false" label="Container Samples" />
+    </collection> -->
+</nav>

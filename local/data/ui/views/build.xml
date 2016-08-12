@@ -1,0 +1,421 @@
+<dashboard>
+  <label>Build Information Center</label>
+  <row>
+    <panel>
+      <html>
+     <h1>
+       <span class="mw-headline" id="Customize_and_Extend_Splunk_Enterprise">Project Tracking - Atlassian Jira</span>
+    </h1>
+<h1>
+      <span class="mw-headline" id="Develop_Splunk_Apps">Exercise #1 - </span>
+    </h1>
+        <p>
+Projects management is a process that helps DevOps teams track their process across the whole stack. In this section, we will be looking at the raw logs and start taking a look at the key value output and observe what value we can capture based on the data. The importance of how we structure of our Sprints and User Stories is a critical element in successful deployments. Jira data also expand into ITSM which will help in workflows in technology like ServiceNow, Remedy or even Jira Service Desk.</p>
+        
+               <h1>
+  <span class="mw-headline" id="Develop_Splunk_Apps">Index Location:</span>
+        </h1>
+        <p>
+      index="jira" sourcetype="_json" | spath
+        </p>
+        
+                     <h1>
+  <span class="mw-headline" id="Develop_Splunk_Apps">Rest API Sample Data:</span>
+        </h1>
+        
+     <p>{
+    "expand": "schema,names",
+    "startAt": 2,
+    "maxResults": 2,
+    "total": 6,
+    "issues": [
+        {
+            "expand": "html",
+            "id": "10123",
+            "self": "http://kelpie9:8081/rest/api/2/issue/BULK-38",
+            "key": "BULK-38",
+            "fields": {
+                "summary": "aaaaa",
+                "timetracking": null,
+                "issuetype": {
+                    "self": "http://kelpie9:8081/rest/api/2/issuetype/5",
+                    "id": "5",
+                    "description": "The sub-task of the issue",
+                    "iconUrl": "http://kelpie9:8081/images/icons/issue_subtask.gif",
+                    "name": "Sub-task",
+                    "subtask": true
+                },
+.
+.
+.
+            },
+            "transitions": "http://kelpie9:8081/rest/api/2/issue/BULK-38/transitions",
+        },
+        {
+
+            "expand": "html",
+            "id": "10108",
+            "self": "http://kelpie9:8081/rest/api/2/issue/BULK-32",
+            "key": "BULK-32",
+            "fields": {
+                 "summary": "subtasks are important, too",
+                 "timetracking": null,
+                 "issuetype": {
+                     "self": "http://kelpie9:8081/rest/api/2/issuetype/5",
+                     "id": "5",
+                     "description": "The sub-task of the issue",
+                     "iconUrl": "http://kelpie9:8081/images/icons/issue_subtask.gif",
+                     "name": "Sub-task",
+                     "subtask": true
+                 },
+.
+.
+.
+            },
+            "transitions": "http://kelpie9:8081/rest/api/2/issue/BULK-32/transitions",
+        }
+    ]
+       }</p>
+        
+                      <h1>
+  <span class="mw-headline" id="Develop_Splunk_Apps">Focus Area:</span>
+        </h1>
+        <p>Sprints - Tasks - User Stories</p>
+        
+        
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th> Other Method of Data Collection 
+</th>
+<th> Description
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> REST Modular Input
+</td>
+<td> <a class="external text" href="https://splunkbase.splunk.com/app/1546/">Splunk App - REST API Modular Input</a>
+</td>
+      </tr>
+<tr valign="top">
+<td width="50%"> Addon for Jira
+</td>
+<td> <a class="external text" href="https://splunkbase.splunk.com/app/1438/">Splunk App - Addon for Jira</a>
+</td>
+      </tr>
+    </table>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Top Issue Reporter</title>
+        <search>
+          <query>index="jira" sourcetype="_json"  | spath | top limit=20 "result.Creator_Name"</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Category of Tickets</title>
+        <search>
+          <query>index="jira" sourcetype="_json"   | spath | top limit=20 "result.Issue Type"</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Issue Tracking Status</title>
+        <search>
+          <query>index="jira" sourcetype="_json" "result.Status"=Closed | spath | stats count(result.Status) by result.Status</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+     <h1>
+       <span class="mw-headline" id="Customize_and_Extend_Splunk_Enterprise"> Source Code Management - GitHub </span>
+    </h1>
+<h1>
+      <span class="mw-headline" id="Develop_Splunk_Apps">Exercise #2 - </span>
+    </h1>
+        <p>Source code management is another data source that can be used to help DevOps teams, and Project Managers captured process throughout the pipeline. This data source is being used to gain insight into their efforts. In many cases, Git Commits provide a way for teams to get insight into changes faster and quicker. The important part of doing Git Projects is to separate efforts into different user stories in various branch builds and to link all changes to the master by making a pull request. The pull request can reflect the Sprint and help teams see the whole process from a single pane of glass. In this example, see how many types of you can format the data. Note this is just a sample pull of data but you can also capture Issue tracking, types of branch builds and master branches and by changing the way you write your commits you can use this as a second correlation point. 
+          </p>
+        <br />
+      <p> Example Pipeline: Projects Management Create Sprint -> Sprint get Tagged to Master Branch -> User Stories created for Feature Branches -> Pull Request Happens -> Merge to Master. </p>
+        
+     <h1>
+  <span class="mw-headline" id="Develop_Splunk_Apps">Index Location:</span>
+        </h1>
+        <p>
+		index="app_lifecycle" sourcetype="github.acme.commits"
+        </p>
+                  
+             <h1>
+  <span class="mw-headline" id="Develop_Splunk_Apps">GitHub Plugin Sample Data</span>
+        </h1>
+        
+        <p>{"sha":"2f1d50f28189cec3d04c82a3a51ca89f10190507","api_url":"https://api.github.acme.com/repos/domeger/ProjectA/commits/2f1d50f28189cec3d04c82a3a51ca89f10190507","url":"https://github.acme.com/domeger/ProjectA/commit/2f1d50f28189cec3d04c82a3a51ca89f10190507","message":"Merge branch 'master' of github.acme.com:acme/ProjectA","author":"Domnick Eger","rawdate":"2016-08-07T16:46:11Z","displaydate":"Jan 13, 2016 - 18:37 PM"}</p>
+        
+               <h1>
+  <span class="mw-headline" id="Develop_Splunk_Apps">GitHub REST Modular Input</span>
+        </h1>
+        
+        <p>[
+  {
+    "id": 1,
+    "url": "https://api.github.com/repos/octocat/Hello-World/issues/comments/1",
+    "html_url": "https://github.com/octocat/Hello-World/issues/1347#issuecomment-1",
+    "body": "Me too",
+    "user": {
+      "login": "octocat",
+      "id": 1,
+      "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/octocat",
+      "html_url": "https://github.com/octocat",
+      "followers_url": "https://api.github.com/users/octocat/followers",
+      "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+      "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+      "organizations_url": "https://api.github.com/users/octocat/orgs",
+      "repos_url": "https://api.github.com/users/octocat/repos",
+      "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/octocat/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "created_at": "2011-04-14T16:00:49Z",
+    "updated_at": "2011-04-14T16:00:49Z"
+  }
+          ]</p>
+        
+        
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th> Other Method of Data Collection 
+</th>
+<th> Description
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> REST Modular Input
+</td>
+<td> <a class="external text" href="https://splunkbase.splunk.com/app/1546/">Splunk App - REST API Modular Input</a>
+</td>
+      </tr>
+
+    </table>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <search>
+          <query>index="app_lifecycle" sourcetype="github.acme.commits" | timechart span=4h count(author) by author</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+     <h1>
+       <span class="mw-headline" id="Customize_and_Extend_Splunk_Enterprise">Continous Integration - Jenkins </span>
+    </h1>
+
+<h1>
+      <span class="mw-headline" id="Develop_Splunk_Apps">Exercise #3 - </span>
+    </h1>
+        <p>Jenkins is a great continuous integration/deployment tool. In this exercise, we will take a look at the different types of outputs you can use to help link your efforts to what happens in your staging and production environments. The key part is the ability to use what best suits your purpose. In this example, we have an RSS Feed, MySQL Serer, and a Native Plugin for Jenkins. In this exercise, we focus on a more simplistic approach. The RSS Feed has a lot of valuable information and with the power of Splunk, we can correlate the details we captured from Jira, Git and merge all this information together to bring an end to end visibility. 
+        </p>
+<h1>
+  <span class="mw-headline" id="Develop_Splunk_Apps">Index Location:</span>
+        </h1>
+        <p>Index Location:
+		index=app_lifecycle source="syndication://Jenkins Build Status"
+        </p>
+                
+        
+<h1>
+  <span class="mw-headline" id="Develop_Splunk_Apps">RSS Sample Data:</span>
+        </h1>
+        <p>
+title="Project A - Branch 1/TOXENV=pypy #10686 (stable)" guidislink=False link=https://jenkins.acme.com/job/Project%20A%20-%20Branch%201/TOXENV=pypy/10686/ title_detail.language=None updated_parsed=2016-08-06T23:09:20Z published_parsed=2016-08-06T23:09:20Z links.0.rel=alternate links.0.type=text/html title_detail.type=text/plain links.0.href=https://jenkins.acme.com/job/Project%20A%20-%20Branch%201/TOXENV=pypy/10686/ published=2016-08-06T23:09:20Z updated=2016-08-06T23:09:20Z title_detail.value="Project A - Branch 1/TOXENV=pypy #10686 (stable)" title_detail.base=https://jenkins.acme.com/rssAll id=tag:hudson.dev.java.net,2016:TOXENV=pypy:10686
+        </p>
+        
+        
+ <h1>
+  <span class="mw-headline" id="Develop_Splunk_Apps">MySQL Sample Data:</span>
+        </h1>       
+        <p>2016-08-07 16:25:38" id="jenkins-test-01/computer/(master)//Project A/5354", duration="34", endDate="2016-08-07 19:28:00.0", fullName="Project A #5354", name="Project A", result="SUCCESS", startDate="2016-08-07 19:28:00.0", userId="NULL", userName="NULL", node_url="jenkins-test-01/computer/(master)/ </p>
+        
+        
+        <h1>
+        <span class="mw-headline" id="Develop_Splunk_Apps">Jenkins Plugin Sample Data:</span>  
+        </h1>
+        
+        
+          <p>{"job_result":"SUCCESS","tag":"test_result","build_url":"job/PASQA104-Deploy_PUPProductEffecDateCheck/211/","metadata":{"":"","ALLUSERSPROFILE":"C:\\ProgramData","ANT_HOME":"","APPDATA":"","BASE":"d:\\AAA\\.jenkins","BUILD_CAUSE":"UPSTREAMTRIGGER","BUILD_CAUSE_UPSTREAMTRIGGER":"true","BUILD_DISPLAY_NAME":"#211","BUILD_ID":"211","BUILD_NUMBER":"211","BUILD_TAG":"jenkins-PASQA104-Deploy_PUPProductEffecDateCheck-211","BUILD_TIMESTAMP":"2016-07-22_15:01","BUILD_URL":"http://pas-em-jenkins.tent.trt.testonline.com.pri/jenkins/job/PASQA104-Deploy_PUPProductEffecDateCheck/211/","CLASSPATH":"","CommonProgramFiles":"C:\\Program Files\\Common Files","CommonProgramFiles(x86)":"C:\\Program Files (x86)\\Common Files","CommonProgramW6432":"C:\\Program Files\\Common Files","COMPUTERNAME":"N01APW042","ComSpec":"C:\\WINDOWS\\system32\\cmd.exe","EXECUTOR_NUMBER":"13","FP_NO_HOST_CHECK":"NO","HUDSON_HOME":"D:\\.jenkins","HUDSON_SERVER_COOKIE":"72ecc7a6027865f8","HUDSON_URL":"http://pas-em-jenkins.tent.trt.testonline.com.pri/jenkins/","JAVA_HOME":"D:\\AAA\\Java\\jdk1.6.0_27","JAVA_OPTS":"-Xms128m -Xmx1024m -XX:PermSize=96m -XX:MaxPermSize=512m","JENKINS_HOME":"D:\\.jenkins","JENKINS_SERVER_COOKIE":"72ecc7a6027865f8","JENKINS_URL":"","JOB_NAME":"PASQA104-Deploy_PUPProductEffecDateCheck","JOB_URL":"","LOCALAPPDATA":"","M2_HOME":"","MailingGroup_HC":"test@testonline.com.com"}</p>
+        
+ 
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th> Other Methods of Data Collection 
+</th>
+<th> Description
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> Splunk Plugin for Jenkins (Coming Soon)
+</td>
+<td> Splunk will be publishing a plugin on Jenkins to push build details to our Heavy Event Collector. This Addon will allow customer to gain more insight to deeper insights of the build cycle.
+</td>
+      </tr>
+       <tr valign="top">
+<td width="50%"> Splunk DBConnect
+</td>
+<td> Using Splunk DBConnect + Jekins MySQL Plugin you can pull in details from MySQL.  
+</td>
+      </tr>
+    </table>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <search>
+          <query>index=app_lifecycle source="syndication://Jenkins Build Status"  |bin _time span=4h | spath | search branch_Name=* |search branch_Name!=Master|timechart span=4h count(eval(like(Tox_Message,"%broken%"))) AS Broken count(eval(like(Tox_Message,"%back%"))) AS Fixed  count(eval(like(Tox_Message,"%stable%"))) AS Stable by branch_Name</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+</dashboard>

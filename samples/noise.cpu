@@ -1,0 +1,6 @@
+index,host,source,sourcetype,"_raw"
+app_lifecycle,"__SERVERNAME__","cpu","cpu2",all      pctUser    pctNice  pctSystem  pctIowait    pctIdle 2015-06-19 02:20:57
+app_lifecycle,"__SERVERNAME__","cpu","cpu2",0        pctUser    pctNice  pctSystem  pctIowait    pctIdle 2015-06-19 02:20:57
+app_lifecycle,"__SERVERNAME__","cpu","cpu2",1        pctUser    pctNice  pctSystem  pctIowait    pctIdle 2015-06-19 02:20:57
+app_lifecycle,"__SERVERNAME__","cpu","cpu2",2        pctUser    pctNice  pctSystem  pctIowait    pctIdle 2015-06-19 02:20:57
+app_lifecycle,"__SERVERNAME__","cpu","cpu2",3        pctUser    pctNice  pctSystem  pctIowait    pctIdle 2015-06-19 02:20:57

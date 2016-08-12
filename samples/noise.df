@@ -1,0 +1,4 @@
+index,source,sourcetype,host,_raw
+app_lifecycle,df,df2,__SERVERNAME__,"2015-06-19 15:40:15 /dev/sda ext4    931G  @UsedG  @AvailG @UsePct%    /"
+app_lifecycle,df,df2,__SERVERNAME__,"2015-06-19 15:40:15 /dev/sdb ext4    931G  @UsedG  @AvailG @UsePct%    /var"
+app_lifecycle,df,df2,__SERVERNAME__,"2015-06-19 15:40:15 /dev/sdc ext4    931G  @UsedG  @AvailG @UsePct%    /home"

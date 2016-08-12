@@ -1,0 +1,104 @@
+<dashboard>
+  <label>Home</label>
+  <description></description>
+  <row>
+    <panel>
+      <html>
+      
+
+<h1>
+      <span class="mw-headline" id="Splunk_Enterprise_and_your_IT_infrastructure">DevOps Powered by Splunk</span>
+    </h1>
+     <img src="https://sw-team.deger.io/devops/en-US/static/app/TA-Splunk_DevOps_Hands-On/mainpage.png"/>
+        <br/>
+        <br/>
+<h1>
+      <span class="mw-headline" id="Splunk_Enterprise_Components">Splunk Platform in Continous Delivery</span>
+    </h1>
+<table cellpadding="10" cellspacing="0" border="1" width="100%">
+<tr>
+<th> Build Pipeline
+</th>
+<th> Technical Overview
+</th>
+      </tr>
+<tr valign="top">
+  <td width="20%"> Build
+</td>
+<td> Project Tracking -&gt; Source Code Management -&gt; Continuous Integration 
+  </td>
+      </tr>
+<tr valign="top">
+<td> Test
+</td> 
+<td> Continuous Integration  -&gt; Quaility Management -&gt; Artifact Repository 
+</td>
+      </tr>
+<tr valign="top">
+<td> Run
+</td>
+<td> Continuous Integration -&gt; Build Slave -&gt; Automation
+  </td>
+      </tr>
+    </table>
+        <br/>
+        <br/>
+<h1>
+
+        <span class="mw-headline" id="Splunk_Enterprise_Components">Benefits of Using Machine Data for DevOps Analytics</span>
+    </h1>
+<table cellpadding="10" cellspacing="0" border="1" width="100%">
+<tr>
+<th> Benefit
+</th>
+<th> Impact on the Business
+</th>
+</tr>
+<tr valign="top">
+<td width="20%"> Better decision making
+</td>
+<td> Machine data uncovers a single version of the truth. All
+parties—IT ops, dev and line of business—have the same view
+from information correlated across the development and
+delivery chain.  
+  </td>
+      </tr>
+<tr valign="top">
+<td> Easier access to data
+</td> 
+<td> Business stakeholders can measure the effect of ideas and
+releases on customer experience, revenue, retention and other
+metrics.
+</td>
+      </tr>
+<tr valign="top">
+<td> Enhanced security and compliance
+</td>
+<td> Security and audit teams can assure compliance through
+visibility into pre-production environments and QA testing for
+code compliance, vulnerabilities and various attack vectors.
+  </td>
+        </tr>
+<tr valign="top">
+<td> Improved uptime
+</td>
+<td> IT ops teams are engaged earlier by collaborating with
+development teams on the measurements to prevent and
+minimize production service disruptions and outages.
+  </td>
+      </tr>
+  <tr valign="top">
+<td> Faster development time
+</td>
+<td> Developers iterate faster with less risk by using insights
+gleaned throughout the app development and delivery
+process. They can demonstrably see how their apps
+run in production and if the latest updates caused
+production problems.
+  </td>
+      </tr>
+    </table>
+      </html>
+    </panel>
+  </row>
+</dashboard>

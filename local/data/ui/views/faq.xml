@@ -1,0 +1,329 @@
+<dashboard>
+  <label>Additional Information</label>
+  <row>
+    <panel>
+      <title>Splunk Education Videos</title>
+      <html>
+    <p>If you're new to splunk, please review these pages:</p>
+    <ol>
+      <li>
+            <a class="external text" target="_blank" href="http://www.splunk.com/en_us/resources/video.BidGVpbzrScJfCx6Z63I7orhm1RMMhzp.html">Splunk Demo</a>
+          </li>
+      <li>
+            <a class="external text" target="_blank" href="http://www.splunk.com/view/education-videos/SP-CAAAGB6">Education Videos</a>
+          </li>
+      <li>
+            <a class="external text" target="_blank" href="http://www.splunk.com/en_us/resources/video.h5c2Vpbzo7ogEw0tkmykwx3SNSiArLmm.html">Creating Alerts Overview</a>
+          </li>
+      <li>
+            <a class="external text" target="_blank" href="http://www.splunk.com/en_us/resources/video.g3dGVpbzodrQDJ2IgxGt6J7LI3ckfhFG.html">Creating Reports Overview</a>
+          </li>
+      <li>
+            <a class="external text" target="_blank" href="http://www.splunk.com/en_us/resources/video.g1dGVpbzpVqtjpICR-sNpiQghltO4xro.html">Creating Pivot Reports Overview</a>
+          </li>
+  </ol>
+</html>
+    </panel>
+    <panel>
+      <title>Splunk Community: Questions &amp; Help</title>
+      <html>        
+        <ul>
+          <li>
+            <a class="external text" target="_blank" href="http://answers.splunk.com/">answers.splunk.com</a> - Q&amp;A Forum</li>
+          <li>
+            <a class="external text" target="_blank" href="http://docs.splunk.com/Documentation/Splunk">docs.splunk.com</a> - Official Product Documentation</li>
+          <li>
+            <a class="external text" target="_blank" href="http://wiki.splunk.com/">wiki.splunk.com</a> - User generated wiki</li>
+          <li>Plan to <a class="external text" target="_blank" href="http://live.splunk.com/conf2016Reserve">join Splunk at .conf2016</a>
+          </li>
+          <li>Join a local <a class="external text" target="_blank" href="https://usergroups.splunk.com/">Splunk User Group</a>
+          </li>
+        </ul>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+     <h1>
+      <span class="mw-headline" id="Customize_and_Extend_Splunk_Enterprise">Customize and Extend Splunk Enterprise</span>
+    </h1>
+<p>Developers can build Splunk Apps and integrate Splunk Enterprise with other tools and applications. Follow these links to help you get started.
+</p>
+    <p>
+      <br/>
+</p>
+<h1>
+      <span class="mw-headline" id="Develop_Splunk_Apps">Develop Splunk Apps</span>
+    </h1>
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th>Task:
+</th>
+<th>Look here:
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> Use the Splunk Web Framework
+</td>
+<td> <a class="external text" href="http://dev.splunk.com/view/web-framework/SP-CAAAER6">Splunk Web Framework Overview</a>
+</td>
+      </tr>
+<tr valign="top">
+<td> See Splunk Web Framework examples
+</td>
+<td> <a class="external text" href="http://dev.splunk.com/view/webframework-codeexamples/SP-CAAAEU7">Splunk Web Framework code examples</a>
+</td>
+      </tr>
+<tr valign="top">
+<td> See Splunk Web Framework components
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/WebFramework">Splunk Web Framework Component Reference</a>
+</td>
+      </tr>
+    </table>
+<h1>
+      <span class="mw-headline" id="Use_the_Splunk_REST_API">Use the Splunk REST API</span>
+    </h1>
+<p>Using the <a class="external text" href="http://dev.splunk.com/view/rest-api-overview/SP-CAAADP8">Splunk REST API</a>, developers can programmatically index, search, and visualize data in Splunk Enterprise from any application.
+</p>
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th>Task:
+</th>
+<th>Look here:
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> Get started with the Splunk REST API
+</td>
+<td> <a class="external text" href="http://dev.splunk.com/view/rest-api-overview/SP-CAAADP8">Splunk REST API Overview</a>
+</td>
+      </tr>
+<tr valign="top">
+<td> Learn how to use the Splunk REST API
+</td>
+<td> <a class="external text" href="http://dev.splunk.com/view/rest-api-tutorials/SP-CAAADQ6">Rest API Tutorials</a>
+</td>
+      </tr>
+<tr valign="top">
+<td> Understand how to improve your logs to work with Splunk
+</td>
+<td> <a class="external text" href="http://dev.splunk.com/view/SP-CAAADP5">Logging overview</a>
+<p>
+            <a class="external text" href="http://dev.splunk.com/view/logging-best-practices/SP-CAAADP6">Logging best practices</a>
+</p>
+</td>
+      </tr>
+<tr valign="top">
+<td> See the REST API Reference
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/RESTREF/RESTprolog">REST API Reference</a>
+</td>
+      </tr>
+    </table>
+<h1>
+      <span class="mw-headline" id="Download_and_install_the_Splunk_SDKs">Download and install the Splunk SDKs</span>
+    </h1>
+<p>Find information about Splunk SDKs on the <a class="external text" href="http://dev.splunk.com/view/sdks/SP-CAAADP7">Splunk for Developers Site</a> and the <a class="external text" href="http://docs.splunk.com/Documentation/SDK">Splunk Documentation site for SDKs</a>.
+</p>
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th>Task:
+</th>
+<th>Look here:
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> Learn more about the Splunk SDKs
+</td>
+<td> <a class="external text" href="http://dev.splunk.com/view/sdks/SP-CAAADP7">Overview of the Splunk SDKs</a>
+</td>
+      </tr>
+<tr valign="top">
+<td> See the code library and examples for a Splunk SDK
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/SDK">Splunk SDK Reference</a>
+</td>
+      </tr>
+</table>
+<h1>
+      <span class="mw-headline" id="Extend_Splunk_Enterprise_Functionality">Extend Splunk Enterprise Functionality</span>
+    </h1>
+<p>Developers can expand the search language to perform custom processing or calculations and customize data inputs programmatically.
+</p>
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th>Task:
+</th>
+<th>Look here:
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> Expand the search language
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/AdvancedDev/Searchscripts">Write custom search commands</a>
+<p>
+            <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Search/Usesearchmacros">Create and use search macros</a>
+</p>
+          <p>
+            <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Alert/Configuringscriptedalerts">Configure scripted alerts</a>
+</p>
+</td>
+      </tr>
+<tr valign="top">
+<td> Manage custom data inputs
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/AdvancedDev/Scriptedinputsintro">Scripted inputs overview</a>
+<p>
+            <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/AdvancedDev/Modinputsintro">Modular inputs overview</a>
+</p>
+</td>
+      </tr>
+    </table>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+   <h1>
+      <span class="mw-headline" id="Managing_Knowledge">Managing Knowledge</span>
+    </h1>
+<p>These tables direct you to topics for understanding and managing knowledge objects such as events, fields, lookups, and data models.
+</p>
+<h1>
+      <span class="mw-headline" id="Splunk_Enterprise_Knowledge">Splunk Enterprise Knowledge</span>
+    </h1>
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th>Task:
+</th>
+<th>Look here:
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> Understand Splunk Enterprise knowledge
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/WhatisSplunkknowledge">What is Splunk Enterprise Knowledge?</a>
+<p>
+            <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/UnderstandandusetheCommonInformationModel">Understand and use the Common Information Model</a>
+</p>
+</td>
+      </tr>
+<tr valign="top">
+<td> Manage knowledge objects
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Monitorandorganizeknowledgeobjects">Monitor and organize knowledge objects</a>
+<p>
+            <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Disableordeleteknowledgeobjects">Disable or delete knowledge objects</a>
+</p>
+</td>
+      </tr>
+    </table>
+<h1>
+      <span class="mw-headline" id="Events_and_event_processing">Events and event processing</span>
+    </h1>
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th>Task:
+</th>
+<th>Look here:
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> Configure event processing
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Data/Overviewofeventprocessing">Configure event processing</a>
+</td>
+      </tr>
+<tr valign="top">
+<td> Manage event segmentation
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Data/Abouteventsegmentation">Manage event segmentation</a>
+</td>
+      </tr>
+<tr>
+<td> Understand events and event types
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Abouteventtypes">About event types</a>
+<p>
+            <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Classifyandgroupsimilarevents">Classify and group similar events</a>
+</p>
+</td>
+      </tr>
+    </table>
+<h1>
+      <span class="mw-headline" id="Fields_and_field_extractions">Fields and field extractions</span>
+    </h1>
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th>Task:
+</th>
+<th>Look here:
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> Understand fields
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Aboutfields">About fields</a>
+<p>
+            <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Usedefaultfields">Use default fields</a>
+</p>
+          <p>
+            <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/ConfigureSplunktoparsemulti-valuefields">Configure multivalue fields</a>
+</p>
+          <p>
+            <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Definecalcfields">Define calculated fields</a>
+</p>
+</td>
+      </tr>
+<tr valign="top">
+<td> Understand and manage field extractions
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Aboutfields">About fields</a>
+<p>
+            <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/WhenSplunkEnterpriseaddsfields">When Splunk Enterprise extracts fields</a>
+</p>
+          <p>
+            <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Managesearch-timefieldextractions">Manage search-time field extractions</a>
+</p>
+          <p>
+            <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/AboutSplunkregularexpressions">About Splunk Enterprise regular expressions</a>
+</p>
+</td>
+      </tr>
+    </table>
+<h1>
+      <span class="mw-headline" id="Build_Data_models">Build Data models</span>
+    </h1>
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th>Task:
+</th>
+<th>Look here:
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> Learn about data models and objects
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Aboutdatamodels">About data models</a>
+</td>
+      </tr>
+<tr valign="top">
+<td> Manage data models and objects
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Managedatamodels">Manage data models</a>
+</td>
+      </tr>
+<tr>
+<td> Use the Data Model Editor
+</td>
+<td> <a class="external text" href="http://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Designdatamodelobjects">Design data models and objects</a>
+</td>
+      </tr>
+    </table>
+    </html>
+    </panel>
+  </row>
+</dashboard>

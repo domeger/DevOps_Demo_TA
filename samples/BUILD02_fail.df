@@ -1,0 +1,4 @@
+index,source,sourcetype,host,_raw
+app_lifecycle,df,df2,BUILD02,"2015-06-19 15:40:15 /dev/sda ext4    931G  931G  0G 100%    /"
+app_lifecycle,df,df2,BUILD02,"2015-06-19 15:40:15 /dev/sdb ext4    931G  931G  0G 100%    /var"
+app_lifecycle,df,df2,BUILD02,"2015-06-19 15:40:15 /dev/sdc ext4    931G  931G  0G 100%    /home"

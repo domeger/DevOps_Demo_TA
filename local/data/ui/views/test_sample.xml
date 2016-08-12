@@ -1,0 +1,181 @@
+<dashboard script="table_cell_highlighting.js" stylesheet="table_cell_highlighting.css">&gt;<label>Test Sample Dashboard</label>
+  <row>
+    <panel>
+      <title>Development Average RT</title>
+      <single>
+        <search>
+          <query>index=app_lifecycle title="Staging Server" | stats avg(total_time) as response_time | rangemap field=response_time low=0-5500 severe=5501-10000 default=severe | eval response_time=round(response_time, 2)." ms"</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="field">response_time</option>
+        <option name="classField">range</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Development Maximum RT</title>
+      <single>
+        <search>
+          <query>index=app_lifecycle title="Staging Server" | stats max(total_time) as response_time | rangemap field=response_time low=0-5500 severe=5501-10000 default=severe | eval response_time=round(response_time, 2)." ms"</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="field">response_time</option>
+        <option name="classField">range</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Development TOX Test Results</title>
+      <chart>
+        <search>
+          <query>index=app_lifecycle source="/tmp/logs/staging-results-*.xml"  | spath | bin _time span=4h |eval difference=tests-errors| eval percent_difference=((errors/difference)*100) | eval percent_difference=if(percent_difference==0, "0", percent_difference)   |timechart span=4h avg(percent_difference) AS "Error %" avg(errors) AS "Errors" count(_time) AS "Tests"</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.overlayFields">"Error %"</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.axisTitleX.text">Time</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>Development Jenkin Build Status by Branch</title>
+      <chart>
+        <search>
+          <query>index=app_lifecycle source="syndication://Jenkins Build Status"  |bin _time span=4h | spath | search branch_Name=* |search branch_Name!=Master|timechart span=4h count(eval(like(Tox_Message,"%broken%"))) AS Broken count(eval(like(Tox_Message,"%back%"))) AS Fixed  count(eval(like(Tox_Message,"%stable%"))) AS Stable by branch_Name</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.axisTitleX.text">Time</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Development Test Suite Report</title>
+      <chart id="chart1">
+        <title>Application A Build Number Runs (Click for more Details)</title>
+        <search>
+          <query>index=app_lifecycle sourcetype=syndication  branch_Name!=Branch build_Number!=1077* |stats count by build_Number</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.enabled">undefined</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <drilldown>
+          <set token="chart_name1">$click.value$</set>
+        </drilldown>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Development Jenkins Build Status</title>
+      <table id="highlight" depends="$chart_name1$">
+        <title>Application A Tox Results For Test -$chart_name1$ (High Volatility at Top)</title>
+        <search>
+          <query>index=app_lifecycle source="/tmp/logs/staging-results-$chart_name1$.xml" |spath |rename testsuite.testcase{@time} AS timetaken |rename testsuite.testcase{@name} AS testname |eval x =mvzip(timetaken,testname) |mvexpand x | eval x = split(x,",") | eval timetaken=mvindex(x,0) | eval testname=mvindex(x,1) |table timetaken testname |eval timetaken=round(timetaken,3) |join testname[search index=app_lifecycle   source="/tmp/logs/staging-results-*.xml" earliest=-24h|spath |rename testsuite.testcase{@time} AS timetaken |rename testsuite.testcase{@name} AS testname |eval x =mvzip(timetaken,testname) |mvexpand x | eval x = split(x,",") | eval timetaken=mvindex(x,0) | eval testname=mvindex(x,1) |eval timetaken=if(timetaken=="FAIL",0,timetaken) |stats avg(timetaken) as avg_timetaken by testname |eval avg_timetaken=round(avg_timetaken,3)] |eval difference=timetaken-avg_timetaken |stats count by testname timetaken avg_timetaken difference |sort - difference |fields - difference count</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="drilldown">row</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

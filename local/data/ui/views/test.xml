@@ -1,0 +1,285 @@
+<dashboard>
+  <label>Test Information Center</label>
+  <row>
+    <panel>
+      <html>
+     <h1>
+       <span class="mw-headline" id="Customize_and_Extend_Splunk_Enterprise">Continous Integration - Jenkins </span>
+    </h1>
+
+
+<h1>
+      <span class="mw-headline" id="Develop_Splunk_Apps">Exercise #1 - </span>
+    </h1>
+        <p>As you can see, Jenkins is called again to this section as we move down the build pipeline. The important part of this exercise is to see the art of the possible and how we can take your build plan number and link them to your build test artifacts. If you go to the Test Sample Dashboards, you can look at how we can make something as simple as a build number pulled from the original data and link them to artifacts create on a Jenkins Slave and use it as correlation. If you want to experiment with this detail, now is the time to play around with the details. See how many use cases you can find from this single data source.</p>
+<h1>
+  <span class="mw-headline" id="Develop_Splunk_Apps">Index Location:</span>
+        </h1>
+        <p>
+		index=app_lifecycle sourcetype=syndication  branch_Name!=Branch
+        </p>
+                
+        
+<h1>
+  <span class="mw-headline" id="Develop_Splunk_Apps">RSS Sample Data:</span>
+        </h1>
+        <p>
+title="Project A - Branch 1/TOXENV=pypy #10685 (stable)" guidislink=False link=https://jenkins.acme.com/job/Project%20A%20-%20Branch%201/TOXENV=pypy/10685/ title_detail.language=None updated_parsed=2016-08-07T14:15:25Z published_parsed=2016-08-07T14:15:25Z links.0.rel=alternate links.0.type=text/html title_detail.type=text/plain links.0.href=https://jenkins.acme.com/job/Project%20A%20-%20Branch%201/TOXENV=pypy/10685/ published=2016-08-07T14:15:25Z updated=2016-08-07T14:15:25Z title_detail.value="Project A - Branch 1/TOXENV=pypy #10685 (stable)" title_detail.base=https://jenkins.acme.com/rssAll id=tag:hudson.dev.java.net,2016:TOXENV=pypy:10685        </p>
+        
+        
+ <h1>
+  <span class="mw-headline" id="Develop_Splunk_Apps">MySQL Sample Data:</span>
+        </h1>       
+        <p>2016-08-07 16:25:38" id="jenkins-test-01/computer/(master)//Project A/5354", duration="34", endDate="2016-08-07 19:28:00.0", fullName="Project A #5354", name="Project A", result="SUCCESS", startDate="2016-08-07 19:28:00.0", userId="NULL", userName="NULL", node_url="jenkins-test-01/computer/(master)/ </p>
+        
+        
+        <h1>
+        <span class="mw-headline" id="Develop_Splunk_Apps">Jenkins Plugin Sample Data:</span>  
+        </h1>
+        
+        
+          <p>{"job_result":"SUCCESS","tag":"test_result","build_url":"job/PASQA104-Deploy_PUPProductEffecDateCheck/211/","metadata":{"":"","ALLUSERSPROFILE":"C:\\ProgramData","ANT_HOME":"","APPDATA":"","BASE":"d:\\AAA\\.jenkins","BUILD_CAUSE":"UPSTREAMTRIGGER","BUILD_CAUSE_UPSTREAMTRIGGER":"true","BUILD_DISPLAY_NAME":"#211","BUILD_ID":"211","BUILD_NUMBER":"211","BUILD_TAG":"jenkins-PASQA104-Deploy_PUPProductEffecDateCheck-211","BUILD_TIMESTAMP":"2016-07-22_15:01","BUILD_URL":"http://pas-em-jenkins.tent.trt.testonline.com.pri/jenkins/job/PASQA104-Deploy_PUPProductEffecDateCheck/211/","CLASSPATH":"","CommonProgramFiles":"C:\\Program Files\\Common Files","CommonProgramFiles(x86)":"C:\\Program Files (x86)\\Common Files","CommonProgramW6432":"C:\\Program Files\\Common Files","COMPUTERNAME":"N01APW042","ComSpec":"C:\\WINDOWS\\system32\\cmd.exe","EXECUTOR_NUMBER":"13","FP_NO_HOST_CHECK":"NO","HUDSON_HOME":"D:\\.jenkins","HUDSON_SERVER_COOKIE":"72ecc7a6027865f8","HUDSON_URL":"http://pas-em-jenkins.tent.trt.testonline.com.pri/jenkins/","JAVA_HOME":"D:\\AAA\\Java\\jdk1.6.0_27","JAVA_OPTS":"-Xms128m -Xmx1024m -XX:PermSize=96m -XX:MaxPermSize=512m","JENKINS_HOME":"D:\\.jenkins","JENKINS_SERVER_COOKIE":"72ecc7a6027865f8","JENKINS_URL":"","JOB_NAME":"PASQA104-Deploy_PUPProductEffecDateCheck","JOB_URL":"","LOCALAPPDATA":"","M2_HOME":"","MailingGroup_HC":"test@testonline.com.com"}</p>
+        
+ 
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th> Other Methods of Data Collection 
+</th>
+<th> Description
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> Splunk Plugin for Jenkins (Coming Soon)
+</td>
+<td> Splunk will be publishing a plugin on Jenkins to push build details to our Heavy Event Collector. This Addon will allow customer to gain more insight to deeper insights of the build cycle.
+</td>
+      </tr>
+       <tr valign="top">
+<td width="50%"> Splunk DBConnect
+</td>
+<td> Using Splunk DBConnect + Jekins MySQL Plugin you can pull in details from MySQL.  
+</td>
+      </tr>
+    </table>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <search>
+          <query>index=app_lifecycle sourcetype=syndication  branch_Name!=Branch build_Number!=1077* |stats count by build_Number</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+     <h1>
+       <span class="mw-headline" id="Customize_and_Extend_Splunk_Enterprise"> Quaility Management - Sonarcube</span>
+    </h1>
+<p>
+</p>
+        <h1>
+      <span class="mw-headline" id="Develop_Splunk_Apps">Exercise #2</span>
+    </h1>
+        <p>As we extend into our pipeline, we are now moving into code quality, line counts, and an integrated process that leverages Jenkins and test cases. In this exercise, we can see that Sonarcube can provide a lot of details. Regardless if you're using Maven, Tox or any other unit testing you can capture the details to find issues in your code before they get published to a staging environment or production. The faster you automate this process the quicker you can gain better insight into your code quality. What critical to note in this exercise is that Sonarcube has an API that can easily be used with Splunk REST Addon and uses it for additional correlation.  </p>
+           <h1>
+      <span class="mw-headline" id="Develop_Splunk_Apps">Index Location:</span>
+    </h1>
+        
+    <p>
+      <p>host="devops-lab01" index="sonarcube" sourcetype="_json" </p>
+        </p>
+         <h1>
+       <span class="mw-headline" id="Customize_and_Extend_Splunk_Enterprise">REST API Sample Data:</span>
+    </h1>
+        
+        <p>[{"id":6150,"key":"com.test.acme.custom:incentives","name":"acme incentives","scope":"PRJ","qualifier":"TRK","date":"2016-03-22T07:04:48-0700","creationDate":"2015-07-22T12:15:46-0700","lname":"acme incentives","version":"0.19.1-363.0.0.0","description":"Parent POM for all Acme DevOps Team, managed by the Continuous Delivery Team","msr":[{"key":"coverage","val":93.2,"frmt_val":"93.2%"},{"key":"sqale_index","val":7381.0,"frmt_val":"15d"}]}]
+        </p>
+          
+        
+    
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th> Other Method of Data Collection 
+</th>
+<th> Description
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> REST Modular Input
+</td>
+<td> <a class="external text" href="https://splunkbase.splunk.com/app/1546/">Splunk App - REST API Modular Input</a>
+</td>
+      </tr>
+
+    </table>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Status of Projects</title>
+        <search>
+          <query>host="devops-lab01" index="sonarcube" sourcetype="_json"   | spath | top limit=20 "tests{}.status"</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Code Covered Lines</title>
+        <search>
+          <query>host="devops-lab01" index="sonarcube" sourcetype="_json"   | spath | stats count(tests{}.coveredLines) by tests{}.coveredLines</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+     <h1>
+       <span class="mw-headline" id="Customize_and_Extend_Splunk_Enterprise">Artifact Repository - Artifactory</span>
+    </h1>
+<h1>
+      <span class="mw-headline" id="Develop_Splunk_Apps">Exercise #3</span>
+    </h1>
+        <p>Now that we have some stable code we can now take a look and provide a way for artifacts to be committed to a repository environment that not only stores the artifacts but provides the ability to capture details around how those objects deploy by Jenkins and how they get pushed into production. In this example, we take a look at the logs that provided multiple different lenses.</p>
+        
+        <h1>
+      <span class="mw-headline" id="Develop_Splunk_Apps">Index Location:</span>
+    </h1>
+        <p>host="devops-lab01" index="artifactory" sourcetype="artifactory"</p>
+        
+        <h1>
+      <span class="mw-headline" id="Develop_Splunk_Apps">Access Logs Sample Data:</span>
+    </h1> 
+        <p>2016-08-07 20:58:35,558 [pool-5-thread-27] [INFO ] (o.a.a.c.BasicStatusHolder:208) - Deploying properties: Jenkins-POC:epic-robustness/solaris/intel/64/splunk/6.4.0/splunk-6.4.0-bca4e18ff050-SunOS-x86_64.tar.Z on Url:http://10.66.129.179:8081/artifactory/Jenkins-POC/</p>
+<table cellpadding="5" cellspacing="0" border="1" width="100%">
+<tr>
+<th> Other Method of Data Collection 
+</th>
+<th> Description
+</th>
+      </tr>
+<tr valign="top">
+<td width="50%"> REST Modular Input
+</td>
+<td> <a class="external text" href="https://splunkbase.splunk.com/app/1546/">Splunk App - REST API Modular Input</a>
+</td>
+      </tr>
+
+    </table>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <search>
+          <query>host="devops-lab01" index="artifactory" sourcetype="artifactory"| top limit=20 platform_id</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">bar</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+</dashboard>
